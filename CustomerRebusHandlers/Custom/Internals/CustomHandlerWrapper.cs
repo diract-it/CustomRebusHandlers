@@ -4,7 +4,10 @@ using Rebus.Handlers;
 
 namespace CustomerRebusHandlers.Custom.Internals
 {
-    public class CustomHandlerWrapper<TMessage> : IHandleMessages<TMessage>
+    /// <summary>
+    /// This handler delegates Rebus' handler invocation to the custom handler
+    /// </summary>
+    class CustomHandlerWrapper<TMessage> : IHandleMessages<TMessage>
     {
         readonly IBus _bus;
 
@@ -13,6 +16,7 @@ namespace CustomerRebusHandlers.Custom.Internals
             _bus = bus;
         }
 
+        // use property injection to make it optional
         public ICustomMessageHandler<TMessage> CustomMessageHandler { get; set; }
 
         public async Task Handle(TMessage message)
