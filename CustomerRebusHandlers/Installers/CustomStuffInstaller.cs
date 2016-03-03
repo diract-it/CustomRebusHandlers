@@ -19,8 +19,8 @@ namespace CustomerRebusHandlers.Installers
                     .WithServiceAllInterfaces()
                     .LifestyleTransient(),
 
-                Component.For(typeof(IHandleMessages<string>))
-                    .ImplementedBy(typeof(CustomHandlerWrapper<string>))
+                Component.For(typeof(IHandleMessages<>))
+                    .ImplementedBy(typeof(CustomHandlerWrapper<>))
                     .LifestyleTransient()
                 );
         }
